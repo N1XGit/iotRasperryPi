@@ -14,7 +14,7 @@ Height = 2
 PlayerPositionY = 0
 PlayerPositionX = 1
 ObstaclePos = Width - 1
-score = 10
+score = 0
 counter = 4
 
 def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # vaihetaan lcd näytön printiksi 
