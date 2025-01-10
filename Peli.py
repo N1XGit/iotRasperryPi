@@ -14,7 +14,7 @@ Height = 2
 PlayerPositionY = 0
 PlayerPositionX = 1
 ObstaclePos = Width - 1
-score = 0
+score = 10
 counter = 4
 
 def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # vaihetaan lcd näytön printiksi 
@@ -26,9 +26,9 @@ def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # va
                 print(' ' * (Width - len(str(score)) -1),str(score))
         else:
             if PlayerPositionY == 1: #jos pelaaja hyppää
-                print(' '*ObstaclePos + 'x' + ' ' * (Width - ObstaclePos - 1))
+                print(' '*(ObstaclePos - 1) + 'x' + ' ' * (Width - ObstaclePos))
             else:
-                print('O' + ' ' * (ObstaclePos - 1) + 'x' + ' ' * (Width - ObstaclePos - 1)) 
+                print('O' + ' ' * (ObstaclePos - 2) + 'x' + ' ' * (Width - ObstaclePos)) 
 
 def main():
     global PlayerPositionX, ObstaclePos, PlayerPositionY, score, counter
@@ -36,14 +36,14 @@ def main():
     
         
         if keyboard.is_pressed('space') and counter == 4: #tähän vaihdetaan se että etäisyysmittarin lukema vaihtuu pienemmäksi
-            PlayerPositionY = 1 #hyppy
+            PlayerPositionY = 1
             PlayerPositionX = -1
             counter = 4
 
         if PlayerPositionY == 1:
-            counter = counter - 1 #hyppyajastin
+            counter = counter - 1
 
-        if counter == 0: #hyppy loppuu
+        if counter == 0:
             PlayerPositionY = 0
             PlayerPositionX = 1
             counter = 4
@@ -51,19 +51,17 @@ def main():
         clear()
 
         ObstaclePos -= 1
-        if ObstaclePos < 0: # pisteet nousee
+        if ObstaclePos < 0:
             ObstaclePos = Width - 1
             score += 1
 
-        if PlayerPositionX == ObstaclePos and PlayerPositionY == 0: #collision
+        if PlayerPositionX == ObstaclePos and PlayerPositionY == 0:
             print('Game over!')
             break
 
         print_game(PlayerPositionX, PlayerPositionY, ObstaclePos, score)
-        time.sleep(0.5)
+        time.sleep(0.2)
 
 
 if __name__ == "__main__":
     main()
-
-    
