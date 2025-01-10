@@ -36,14 +36,14 @@ def main():
     
         
         if keyboard.is_pressed('space') and counter == 4: #tähän vaihdetaan se että etäisyysmittarin lukema vaihtuu pienemmäksi
-            PlayerPositionY = 1
+            PlayerPositionY = 1 #hyppy
             PlayerPositionX = -1
             counter = 4
 
         if PlayerPositionY == 1:
-            counter = counter - 1
+            counter = counter - 1 #hyppyajastin
 
-        if counter == 0:
+        if counter == 0: #hyppy loppuu
             PlayerPositionY = 0
             PlayerPositionX = 1
             counter = 4
@@ -51,11 +51,11 @@ def main():
         clear()
 
         ObstaclePos -= 1
-        if ObstaclePos < 0:
+        if ObstaclePos < 0: # pisteet nousee
             ObstaclePos = Width - 1
             score += 1
 
-        if PlayerPositionX == ObstaclePos and PlayerPositionY == 0:
+        if PlayerPositionX == ObstaclePos and PlayerPositionY == 0: #collision
             print('Game over!')
             break
 
