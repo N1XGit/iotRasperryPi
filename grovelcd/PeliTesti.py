@@ -122,9 +122,9 @@ def main():
 
         if PlayerPositionX == ObstaclePos and PlayerPositionY == 0:
             lcd.clear(lcd)
-            lcd.setCursor(0,1)
+            lcd.setCursor(0,0)
             lcd.write('Game over!')
-            lcd.setCursor(rows - 1, 1)
+            lcd.setCursor(rows - 1, 0)
             lcd.write(score)
             break
 
