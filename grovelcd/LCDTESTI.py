@@ -23,6 +23,9 @@ class JHD1802(Display):
     def name(self):
         return "JHD1802"
     
+    def type(self):
+        return TYPE_CHAR
+    
     def size(self):
         return 2, 16
     
@@ -59,8 +62,6 @@ def main():
 
     lcd = JHD1802()
     rows, cols = lcd.size()
-    print("123")
-    print("456")
 
     lcd.backlight(False)
     time.sleep(1)
@@ -68,14 +69,8 @@ def main():
     lcd.backlight(True)
     lcd.setCursor(0,0)
     lcd.write("Tite24")
-    lcd.setCursor(1, 0)
+    lcd.setCursor(rows - 1, 0)
     lcd.write("Projekti")
-
-    time.sleep(5)
-
-    lcd.clear()
 
     if __name__ == '__main__':
         main()
-
-    
