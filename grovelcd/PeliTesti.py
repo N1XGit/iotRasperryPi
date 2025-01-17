@@ -2,7 +2,8 @@ from base import *
 from i2c import Bus
 import time
 import sys
-import keyboard
+from pynput import keyboard
+from pynput.keyboard import Key, Controller
 
 # sphinx autoapi required
 __all__ = ["JHD1802"]
@@ -88,7 +89,7 @@ def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # va
                 JHD1802.write(' ' * (Width - len(str(score)) -1),str(score))
         else:
             JHD1802.setCursor(Height - 1, 0)
-            if PlayerPositionY == 1: #jos pelaaja hyppää
+            if PlayerPositionY == 1:
                 JHD1802.write(' '*(ObstaclePos - 1) + 'x' + ' ' * (Width - ObstaclePos))
             else:
                 JHD1802.write('O' + ' ' * (ObstaclePos - 2) + 'x' + ' ' * (Width - ObstaclePos)) 
@@ -96,13 +97,14 @@ def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # va
 def main():
     global PlayerPositionX, ObstaclePos, PlayerPositionY, score, counter
     while True:
-    
-        
-        if keyboard.is_pressed('space') and counter == 4: #tähän vaihdetaan se että etäisyysmittarin lukema vaihtuu pienemmäksi
+                                                                                                        
+        keyboard = Controller()
+                                                   
+        if keyboard.press(Key.space) and counter == 4: #tähän vaihdetaan se että etäisyysmittarin lukema vaihtuu pienemmäksi
             PlayerPositionY = 1
             PlayerPositionX = -1
             counter = 4
-
+            
         if PlayerPositionY == 1:
             counter = counter - 1
 
