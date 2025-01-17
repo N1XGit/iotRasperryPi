@@ -75,27 +75,30 @@ score = 0
 counter = 4
 
 def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # vaihetaan lcd näytön printiksi 
-    
+    lcd = JHD1802
+    rows, cols = lcd.size()
     
     for row in range(Height):
         if row == 0:
-            JHD1802.setCursor(0, 0)
+            lcd.setCursor(0, 0)
             if PlayerPositionY == 1: #jos pelaaja hyppää
-                JHD1802.write('O' + ' ' * (Width - len(str(score)) - 2), str(score))
+                lcd.write('O' + ' ' * (Width - len(str(score)) - 2), str(score))
             else:
-                JHD1802.write(' ' * (Width - len(str(score)) -1),str(score))
+                lcd.write(' ' * (Width - len(str(score)) -1),str(score))
         else:
-            JHD1802.setCursor(Height - 1, 0)
+            lcd.setCursor(Height - 1, 0)
             if PlayerPositionY == 1: #jos pelaaja hyppää
-                JHD1802.write(' '*(ObstaclePos - 1) + 'x' + ' ' * (Width - ObstaclePos))
+                lcd.write(' '*(ObstaclePos - 1) + 'x' + ' ' * (Width - ObstaclePos))
             else:
-                JHD1802.write('O' + ' ' * (ObstaclePos - 2) + 'x' + ' ' * (Width - ObstaclePos)) 
+                lcd.write('O' + ' ' * (ObstaclePos - 2) + 'x' + ' ' * (Width - ObstaclePos)) 
 
 def main():
     global PlayerPositionX, ObstaclePos, PlayerPositionY, score, counter
     while True:
     
-        
+        lcd = JHD1802
+        Height, Width = lcd.size()
+
         if counter == 4: #tähän vaihdetaan se että etäisyysmittarin lukema vaihtuu pienemmäksi
             PlayerPositionY = 1
             PlayerPositionX = -1
@@ -116,11 +119,11 @@ def main():
             score += 1
 
         if PlayerPositionX == ObstaclePos and PlayerPositionY == 0:
-            JHD1802.clear()
-            JHD1802.setCursor(0,0)
-            JHD1802.write('Game over!')
-            JHD1802.setCursor(0, Height - 1)
-            JHD1802.write(score)
+            lcd.clear()
+            lcd.setCursor(0,0)
+            lcd.write('Game over!')
+            lcd.setCursor(0, Height - 1)
+            lcd.write(score)
             break
 
         print_game(PlayerPositionX, PlayerPositionY, ObstaclePos, score)
