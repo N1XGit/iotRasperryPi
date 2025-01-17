@@ -2,7 +2,6 @@ from base import *
 from i2c import Bus
 import time
 import sys
-import keyboard
 # sphinx autoapi required
 __all__ = ["JHD1802"]
 
@@ -101,7 +100,7 @@ def main():
     while True:
     
         
-        if keyboard.is_pressed('space') and counter == 4: #tähän vaihdetaan se että etäisyysmittarin lukema vaihtuu pienemmäksi
+        if counter == 4: #tähän vaihdetaan se että etäisyysmittarin lukema vaihtuu pienemmäksi
             PlayerPositionY = 1
             PlayerPositionX = -1
             counter = 4
