@@ -91,6 +91,8 @@ def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # va
                 lcd.write(' '*(ObstaclePos - 1) + 'x' + ' ' * (Width - ObstaclePos))
             else:
                 lcd.write('O' + ' ' * (ObstaclePos - 2) + 'x' + ' ' * (Width - ObstaclePos)) 
+    for i in range(cols):
+        lcd.write(chr(i)
 
 def main():
     global PlayerPositionX, ObstaclePos, PlayerPositionY, score, counter
