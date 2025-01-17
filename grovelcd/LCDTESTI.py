@@ -62,15 +62,25 @@ def main():
 
     lcd = JHD1802()
     rows, cols = lcd.size()
+    print("LCD model: {}".format(lcd.name))
+    print("LCD type : {} x {}".format(cols, rows))
 
     lcd.backlight(False)
     time.sleep(1)
 
     lcd.backlight(True)
-    lcd.setCursor(0,0)
-    lcd.write("Tite24")
+    lcd.setCursor(0, 0)
+    lcd.write("KYS!")
+    lcd.setCursor(0, cols - 1)
+    lcd.write('kys')
     lcd.setCursor(rows - 1, 0)
-    lcd.write("Projekti")
+    for i in range(cols):
+        lcd.write(chr(ord('A') + i))
+
+    time.sleep(3)
+    lcd.clear()
 
     if __name__ == '__main__':
         main()
+
+    
