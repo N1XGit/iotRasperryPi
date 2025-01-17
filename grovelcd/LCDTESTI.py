@@ -11,11 +11,10 @@ class JHD1802(Display):
         self._bus = Bus()
         self._addr = address
         if self._bus.write_byte(self._addr, 0):
-            print("Check if LCD {} inserted, then try again"
-                    .format(self.name))
-            
+            print("Check if LCD {} inserted, then try again".format(self.name))
+            sys.exit(1)
         self.textCommand(0x02)
-        time.sleep(0.01)
+        time.sleep(0.1)
         self.textCommand(0x08 | 0x04)
         self.textCommand(0x28)
 
