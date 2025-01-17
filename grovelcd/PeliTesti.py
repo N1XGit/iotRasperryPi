@@ -98,7 +98,7 @@ def main():
     global PlayerPositionX, ObstaclePos, PlayerPositionY, score, counter
     while True:
     
-        lcd = JHD1802
+        lcd = JHD1802()
         rows, cols = lcd.size()
 
         if counter == 4: #tähän vaihdetaan se että etäisyysmittarin lukema vaihtuu pienemmäksi
