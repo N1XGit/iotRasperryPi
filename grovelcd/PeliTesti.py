@@ -76,17 +76,16 @@ counter = 4
 
 def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # vaihetaan lcd näytön printiksi 
     lcd = JHD1802
-
     
     for row in range(Height):
         if row == 0:
-            lcd.setCursor(0, 0)
+            lcd.setCursor(0, 1)
             if PlayerPositionY == 1: #jos pelaaja hyppää
                 lcd.write('O' + ' ' * (Width - len(str(score)) - 2), str(score))
             else:
                 lcd.write(' ' * (Width - len(str(score)) -1),str(score))
         else:
-            lcd.setCursor(rows - 1, 0)
+            lcd.setCursor(Height - 1, 1)
             if PlayerPositionY == 1: #jos pelaaja hyppää
                 lcd.write(' '*(ObstaclePos - 1) + 'x' + ' ' * (Width - ObstaclePos))
             else:
@@ -118,10 +117,10 @@ def main():
             score += 1
 
         if PlayerPositionX == ObstaclePos and PlayerPositionY == 0:
-            lcd.clear()
-            lcd.setCursor(0,0)
+            lcd.clear(lcd)
+            lcd.setCursor(0,1)
             lcd.write('Game over!')
-            lcd.setCursor(0, rows - 1)
+            lcd.setCursor(Height - 1, 1)
             lcd.write(score)
             break
 
