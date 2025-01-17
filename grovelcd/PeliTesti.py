@@ -79,7 +79,7 @@ counter = 4
 
 def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # vaihetaan lcd näytön printiksi 
     
-    JHD1802.clear()
+    JHD1802.clear(lcd)
     
     for row in range(Height):
         if row == 0:
@@ -120,7 +120,7 @@ def main():
             score += 1
 
         if PlayerPositionX == ObstaclePos and PlayerPositionY == 0:
-            JHD1802.clear()
+            JHD1802.clear(lcd)
             JHD1802.write('Game over!')
             JHD1802.write(score)
             break
