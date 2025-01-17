@@ -2,6 +2,7 @@ from base import *
 from i2c import Bus
 import time
 import sys
+
 # sphinx autoapi required
 __all__ = ["JHD1802"]
 
@@ -65,10 +66,6 @@ class JHD1802(Display):
         self._bus.write_byte_data(self._addr,0x80,cmd)
         
 
-
-
-
-
 Width = 16
 Height = 2
 PlayerPositionY = 0
@@ -79,7 +76,6 @@ counter = 4
 
 def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # vaihetaan lcd näytön printiksi 
     
-    JHD1802.clear(lcd)
     
     for row in range(Height):
         if row == 0:
@@ -120,8 +116,10 @@ def main():
             score += 1
 
         if PlayerPositionX == ObstaclePos and PlayerPositionY == 0:
-            JHD1802.clear(lcd)
+            JHD1802.clear()
+            JHD1802.setCursor(0,0)
             JHD1802.write('Game over!')
+            JHD1802.setCursor(0, Height - 1)
             JHD1802.write(score)
             break
 
