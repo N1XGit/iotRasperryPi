@@ -82,7 +82,7 @@ def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # va
         if row == 0:
             lcd.setCursor(0, 0)
             if PlayerPositionY == 1: #jos pelaaja hyppää
-                lcd.write('O' + ' ' * (Width - len(str(score)) - 2), str(score))
+                lcd.write('O' + ' ' * (Width - 1))
             else:
                 lcd.write(' ' * (Width - len(str(score)) -1),str(score))
         else:
