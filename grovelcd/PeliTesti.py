@@ -79,7 +79,7 @@ def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # va
     
     for row in range(Height):
         if row == 0:
-            JHD1802.setCursor(0,0)
+            JHD1802.setCursor(0, 0)
             if PlayerPositionY == 1: #jos pelaaja hyppää
                 JHD1802.write('O' + ' ' * (Width - len(str(score)) - 2), str(score))
             else:
