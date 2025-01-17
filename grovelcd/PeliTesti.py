@@ -75,7 +75,7 @@ score = 0
 counter = 4
 
 def print_game(PlayerPosX:int, PlayerPosY:int, ObstaclePos:int, score:int): # vaihetaan lcd näytön printiksi 
-    lcd = JHD1802
+    lcd = JHD1802()
     row, cols = lcd.size()
     
     for row in range(Height):
