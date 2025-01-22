@@ -67,28 +67,28 @@ class JHD1802(Display):
     def textCommand(self, cmd):
         self._bus.write_byte_data(self._addr,0x80,cmd)
         
-obstaclePos = [15]
+obstaclePos = [15] #lista esteistä
 
-width = 16
+width = 16 #peliruudun koko
 height = 2
 
-playerPosX = 0
+playerPosX = 0 #pelaajan paikka, posX esteiden huomioon, posY=1 maassa posY = 0 hyppy
 playerPosY = 1
 
 score = 0
 
-scoresDict = {}
+scoresDict = {} #pisteet
 
 name = ""
 
-with open("savedScores.json", "r") as file:
+with open("savedScores.json", "r") as file: #pelipisteiden asetus
     scoresDict = json.load(file)
 
 
 
 def getName():
     
-    lcd = JHD1802()
+    lcd = JHD1802() #pelaajan nimen syöttö
 
     rows, columns = JHD1802.size()
 
@@ -122,7 +122,7 @@ def getName():
         return name
 
 
-def input():
+def inputJump():
     #sensorin koodi
     return 0
 
@@ -132,41 +132,41 @@ def printGame():
 
     rows, columns = JHD1802.size()
 
-    if width - obstaclePos[len(obstaclePos) - 1] >=6:
+    if width - obstaclePos[len(obstaclePos) - 1] >=6: #onko esteelle tilaa
         
-        newObstacle = random.randint(6,10)
+        newObstacle = random.randint(6,10) #esteiden välin random
         
-        if obstaclePos[len(obstaclePos) - 1] + newObstacle <= 15:
+        if obstaclePos[len(obstaclePos) - 1] + newObstacle <= 15: # jos este mahtuu
             
-            obstaclePos.append(15)
+            obstaclePos.append(15) # este näytön reunaan
 
 
     lcd.clear()
 
-    for obstacle in obstaclePos: #obstacles
+    for obstacle in obstaclePos: #esteiden piirto
         
         lcd.setCursor(1, obstacle)
         lcd.write("x")
 
-    if playerPosY == 1: #player
+    if playerPosY == 1: #pelaajan piirto
 
-        lcd.setCursor(1, 0)
+        lcd.setCursor(1, 0) #jos maassa
         lcd.write("I")
     
     elif playerPosY == 0:
         
-        lcd.setCursor(0, 0)
+        lcd.setCursor(0, 0) #jos hypännyt
         lcd.write("I")
 
-    lcd.setCursor(0, columns - len(str(score)))
+    lcd.setCursor(0, columns - len(str(score))) #pisteiden piirto 
     lcd.write(score)
 
 
 def collision():
     
-    for obstacle in obstaclePos:
+    for obstacle in obstaclePos: # lista läpi, tarkastaa onko pelaaja esteen kanssa samassa ruudussa
         if obstacle == playerPosX and playerPosY == 1:
-            return True
+            return True # jos osuu
         
     return False
 
@@ -185,38 +185,38 @@ def gameOver():
     lcd.setCursor(1, 0)
     lcd.write("Score saved.")
 
-    scoresDict[name] = score
+    scoresDict[name] = score #pisteiden asetus sanakirjaan
 
     with open("savedScores.json", "w") as file:
-        json.dump(scoresDict, file)
+        json.dump(scoresDict, file) #sanakirjan päivitys
 
 
 
 def main():
 
-    name = getName()
-    jumpTimer = 3
+    name = getName() #pelaajan nimen kysyminen
+    jumpTimer = 3 #kaunko pelaaja ilmassa hypyn jälkeen
 
     while True:
 
-        if input() and jumpTimer == 3:
+        if inputJump() and jumpTimer == 3 and playerPosY = 0: # jos pelaaja maassa ja hyppyinput saatu
             
-            playerPosY = 0
+            playerPosY = 0 # hyppy
 
         if playerPosY == 0:
-            jumpTimer = jumpTimer - 1
+            jumpTimer = jumpTimer - 1 # pelaajan hypyn lasku
 
-        if jumpTimer == 0:
+        if jumpTimer == 0: # jos pelaaj allut kolme tickiä ilmassa palaa maahan ja hyppylaskuri nollaantuu
             playerPosY = 1
             jumpTimer = 3
 
         if collision():
-            gameOver()
+            gameOver() # jos pelaaja osuu esteeseen
             break
 
         for i in obstaclePos:
-            obstaclePos.remove(i)
-            if obstaclePos > 0:
+            obstaclePos.remove(i) #jos este menee ruudulta pois se poistetaan
+            if obstaclePos > 0: # esteen paikkaa siirretään 1 eteenpäin
                 obstaclePos.append(i - 1)
             
 
