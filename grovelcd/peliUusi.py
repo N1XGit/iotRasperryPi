@@ -90,7 +90,7 @@ def getName():
     
     lcd = JHD1802() #pelaajan nimen syöttö
 
-    rows, columns = JHD1802.size()
+    rows, columns = lcd.size()
 
     while True:
         lcd.setCursor(0, 0)
@@ -130,7 +130,7 @@ def printGame():
     
     lcd = JHD1802()
 
-    rows, columns = JHD1802.size()
+    rows, columns = lcd.size()
 
     if width - obstaclePos[len(obstaclePos) - 1] >=6: #onko esteelle tilaa
         
@@ -171,7 +171,7 @@ def gameOver():
     
     lcd = JHD1802()
 
-    rows, columns = JHD1802.size()
+    rows, columns = lcd.size()
 
     lcd.clear()
 
@@ -196,7 +196,7 @@ def main():
     jumpTimer = 3 #kaunko pelaaja ilmassa hypyn jälkeen
 
     lcd = JHD1802()
-    rows, columns = JHD1802.size()
+    rows, columns = lcd.size()
 
     while True:
 
