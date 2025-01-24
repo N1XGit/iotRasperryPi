@@ -181,11 +181,17 @@ def gameOver():
     lcd.setCursor(1, 0)
     lcd.write(" Score saved.")
 
+    time.sleep(2)
+    lcd.clear()
+
     scoresDict[name] = score
+
 
     # Uncomment to save scores to file
     #with open("savedScores.json", "w") as file:
          #json.dump(scoresDict, file)
+
+    return 0
 
 
 def main():
