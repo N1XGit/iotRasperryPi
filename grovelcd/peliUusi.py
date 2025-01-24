@@ -199,7 +199,7 @@ def main():
 
     while True:
 
-        if inputJump() and jumpTimer == 3 and playerPosY = 0: # jos pelaaja maassa ja hyppyinput saatu
+        if inputJump() and jumpTimer == 3 and playerPosY == 0: # jos pelaaja maassa ja hyppyinput saatu
             
             playerPosY = 0 # hyppy
 
