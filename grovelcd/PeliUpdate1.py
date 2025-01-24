@@ -85,8 +85,6 @@ def getName():
         lcd.setCursor(1, 0)
         lcd.write(name)
 
-        time.sleep(2)
-
         lcd.clear()
         lcd.setCursor(0, 0)
         lcd.write(" Save name? y/n")
@@ -135,7 +133,7 @@ def printGame():
     # Draw obstacles
     for obstacle in obstaclePos:
         lcd.setCursor(1, 0)
-        lcd.setCursor(1, obstacle + 1)
+        lcd.setCursor(1, obstacle)
         lcd.write("x")
 
     # Draw player
@@ -182,33 +180,39 @@ def gameOver():
 
 
 def main():
-    global playerPosY, playerPosX, obstaclePos, score, name
-
-    name = getName()  # Ask for player's name
-    jumpTimer = 3  # Timer for jump (how long the player stays in the air)
-
-    while True:
-        generate_obstacle()
-        printGame()
-        
-        if inputJump() and jumpTimer == 3 and playerPosY == 1:  # Jumping condition
-            playerPosY = 0  # Player jumps
-
-        if playerPosY == 0:
-            jumpTimer -= 1  # Countdown for jump
-
-        if jumpTimer == 0:
-            playerPosY = 1  # Player lands
-            jumpTimer = 3  # Reset jump timer
-
-        if collision():  # Check for collision with obstacles
-            gameOver()  # End game if collision happens
-            break
-
-        move_obstacles()  # Move obstacles to the left
-
-        time.sleep(0.5)  # Game loop delay
-          # Print the game state
+    newGame = "y"
+    while newGame == "y":
+        global playerPosY, playerPosX, obstaclePos, score, name
+    
+        name = getName()  # Ask for player's name
+        jumpTimer = 3  # Timer for jump (how long the player stays in the air)
+    
+        while True:
+            generate_obstacle()
+            printGame()
+            
+            if inputJump() and jumpTimer == 3 and playerPosY == 1:  # Jumping condition
+                playerPosY = 0  # Player jumps
+    
+            if playerPosY == 0:
+                jumpTimer -= 1  # Countdown for jump
+    
+            if jumpTimer == 0:
+                playerPosY = 1  # Player lands
+                jumpTimer = 3  # Reset jump timer
+    
+            if collision():  # Check for collision with obstacles
+                gameOver()  # End game if collision happens
+                break
+    
+            move_obstacles()  # Move obstacles to the left
+    
+            time.sleep(0.5)  # Game loop delay
+              # Print the game state
+        lcd.clear()
+        lcd.setCursor(0,0)
+        lcd.write(" New game? (y/n)")
+        newGame = input()
 
 
 if __name__ == "__main__":
