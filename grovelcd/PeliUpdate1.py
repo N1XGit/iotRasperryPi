@@ -198,7 +198,7 @@ def main():
 
         move_obstacles()  # Move obstacles to the left
 
-        time.sleep(0.2)  # Game loop delay
+        time.sleep(0.5)  # Game loop delay
         printGame()  # Print the game state
 
 
