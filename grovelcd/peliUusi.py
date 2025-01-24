@@ -118,12 +118,13 @@ def getName():
 
         saveName = saveName.lower()
 
-        if saveName == "y":
+        confirm = input()
+        if confirm == "y":
             
             lcd.clear()
             break
         
-        return name
+    return name
 
 
 def inputJump():
