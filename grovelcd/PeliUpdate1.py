@@ -153,7 +153,7 @@ def printGame():
 
 def collision():
     global playerPosX, playerPosY
-    if playerPosY == 1 and playerPosX in obstaclePos:
+    if playerPosY == 1 and playerPosX==obstaclePos[0]:
         return True  # Collision detected
     return False
 
@@ -182,6 +182,8 @@ def main():
     jumpTimer = 3  # Timer for jump (how long the player stays in the air)
 
     while True:
+        printGame()
+        
         if inputJump() and jumpTimer == 3 and playerPosY == 1:  # Jumping condition
             playerPosY = 0  # Player jumps
 
@@ -199,7 +201,7 @@ def main():
         move_obstacles()  # Move obstacles to the left
 
         time.sleep(0.5)  # Game loop delay
-        printGame()  # Print the game state
+          # Print the game state
 
 
 if __name__ == "__main__":
