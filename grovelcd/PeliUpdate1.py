@@ -129,7 +129,6 @@ def printGame():
 
     rows, columns = lcd.size()
 
-    generate_obstacle()  # Generate new obstacles
 
     lcd.clear()
 
@@ -182,6 +181,7 @@ def main():
     jumpTimer = 3  # Timer for jump (how long the player stays in the air)
 
     while True:
+        generate_obstacle()
         printGame()
         
         if inputJump() and jumpTimer == 3 and playerPosY == 1:  # Jumping condition
