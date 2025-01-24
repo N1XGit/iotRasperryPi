@@ -212,7 +212,7 @@ def move_obstacles():
         if obstacle > 0:
             new_obstacle_pos.append(obstacle - 1)  # Move obstacle one step left
     obstaclePos = new_obstacle_pos
-    print(obstaclePos)
+
 
 
 def printGame():
@@ -242,8 +242,10 @@ def printGame():
     # Display score
     lcd.setCursor(0, columns - len(str(score)))
     lcd.write(str(score))
+
+    closest = obstaclePos[0] + 1
     lcd.setCursor(0,3)
-    lcd.write(obstaclePos[0] + 1)
+    lcd.write(closest)
 
 
 def collision():
