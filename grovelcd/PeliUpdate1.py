@@ -183,7 +183,7 @@ def main():
     newGame = "y"
     while newGame == "y":
         global playerPosY, playerPosX, obstaclePos, score, name
-    
+        obstaclePos = []
         name = getName()  # Ask for player's name
         jumpTimer = 3  # Timer for jump (how long the player stays in the air)
     
@@ -202,7 +202,8 @@ def main():
                 jumpTimer = 3  # Reset jump timer
     
             if collision():  # Check for collision with obstacles
-                gameOver()  # End game if collision happens
+                gameOver()# End game if collision happens
+                time.sleep(2)
                 break
     
             move_obstacles()  # Move obstacles to the left
