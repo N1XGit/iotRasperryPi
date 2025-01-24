@@ -77,21 +77,21 @@ def getName():
     lcd = JHD1802()
     while True:
         lcd.clear()
-        lcd.setCursor(0, 0)
+        lcd.setCursor(0, 1)
         lcd.write("Give name: ")
 
         name = input()
 
-        lcd.setCursor(1, 0)
+        lcd.setCursor(1, 1)
         lcd.write(name)
 
         time.sleep(2)
 
         lcd.clear()
-        lcd.setCursor(0, 0)
+        lcd.setCursor(0, 1)
         lcd.write("Save name? y/n")
 
-        lcd.setCursor(1, 0)
+        lcd.setCursor(1, 1)
         lcd.write(name)
 
         saveName = input().lower()
