@@ -166,6 +166,11 @@ def getName():
 
 def inputJump():
 
+    
+    pin = 5
+    sonar = GroveUltrasonicRanger(pin)
+    from grove.helper import SlotHelper
+    
     global baseDistance
     newDistance = sonar.get_distance
     if newDistance <= baseDistance - 2:
