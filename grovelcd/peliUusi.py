@@ -97,6 +97,7 @@ def getName():
     rows, columns = lcd.size()
 
     while True:
+        lcd.clear()
         lcd.setCursor(0, 0)
         lcd.write("Give name: ")
 
@@ -108,7 +109,7 @@ def getName():
         time.sleep(2)
 
         lcd.clear()
-        lcd.setCursor(0,0)
+        lcd.setCursor(0,1)
         lcd.write("Save name? y/n")
 
         lcd.setCursor(1, 0)
@@ -160,7 +161,7 @@ def printGame():
         lcd.write("I")
 
     lcd.setCursor(0, columns - len(str(score))) #pisteiden piirto 
-    lcd.write(score)
+    lcd.write(str(score))
 
 
 def collision():
