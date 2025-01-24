@@ -197,6 +197,9 @@ def main():
     name = getName() #pelaajan nimen kysyminen
     jumpTimer = 3 #kaunko pelaaja ilmassa hypyn jälkeen
 
+    lcd = jhd1802()
+    rows, columns = JHD1802.size()
+
     while True:
 
         if inputJump() and jumpTimer == 3 and playerPosY == 0: # jos pelaaja maassa ja hyppyinput saatu
