@@ -214,6 +214,7 @@ def main():
         lcd.setCursor(0,0)
         lcd.write(" New game? (y/n)")
         newGame = input()
+        lcd.clear()
 
 
 if __name__ == "__main__":
