@@ -130,9 +130,10 @@ def printGame():
 
     lcd.clear()
 
+    lcd.setCursor(1, 0)
     # Draw obstacles
     for obstacle in obstaclePos:
-        lcd.setCursor(1, 0)
+        
         lcd.setCursor(1, obstacle)
         lcd.write("x")
 
@@ -214,6 +215,7 @@ def main():
         lcd.setCursor(0,0)
         lcd.write(" New game? (y/n)")
         newGame = input()
+        lcd.clear()
 
 
 if __name__ == "__main__":
