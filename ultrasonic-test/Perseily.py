@@ -245,7 +245,7 @@ def printGame():
 
     closest = obstaclePos[0] + 1
     lcd.setCursor(0,3)
-    lcd.write(closest)
+    lcd.write(str(closest))
 
 
 def collision():
