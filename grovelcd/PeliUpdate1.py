@@ -66,6 +66,9 @@ score = 0  # Player's score
 scoresDict = {}  # Saved scores
 name = ""  # Player's name
 
+with open("savedScores.json", "r") as file:
+         json.load(scoresDict, file)
+
 lcd = JHD1802()
 lcd.clear()
 
@@ -167,8 +170,8 @@ def gameOver():
     scoresDict[name] = score
 
     # Uncomment to save scores to file
-    # with open("savedScores.json", "w") as file:
-    #     json.dump(scoresDict, file)
+    with open("savedScores.json", "w") as file:
+         json.dump(scoresDict, file)
 
 
 def main():
