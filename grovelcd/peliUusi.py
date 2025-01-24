@@ -134,11 +134,7 @@ def printGame():
 
     if width - obstaclePos[len(obstaclePos) - 1] >=6: #onko esteelle tilaa
         
-        newObstacle = random.randint(6,10) #esteiden välin random
-        
-        if obstaclePos[len(obstaclePos) - 1] + newObstacle <= 15: # jos este mahtuu
-            
-            obstaclePos.append(15) # este näytön reunaan
+        obstaclePos.append(15) # este näytön reunaan
 
 
     lcd.clear()
