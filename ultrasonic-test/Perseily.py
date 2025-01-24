@@ -257,7 +257,19 @@ def main():
     sonar = GroveUltrasonicRanger(pin)
     from grove.helper import SlotHelper
     pin = 5
+    
+    lcd.clear()
+    lcd.setCursor(0,0)
+    lcd.write("Käsi pois edestä")
+    lcd.setCursor(1,0)
+    lcd.write("Otetaan etäisyys ")
+    time.sleep(2)
     baseDistance = sonar.get_distance()
+    lcd.clear()
+    lcd.setCursor(0,0)
+    lcd.write(" Valmis")
+    time.sleep(2)
+    lcd.clear()
     
     
     newGame = "y"
