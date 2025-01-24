@@ -253,10 +253,11 @@ def gameOver():
 
 
 def main():
-    
+
+    pin = 5
     sonar = GroveUltrasonicRanger(pin)
     from grove.helper import SlotHelper
-    pin = 5
+    
     
     lcd.clear()
     lcd.setCursor(0,0)
