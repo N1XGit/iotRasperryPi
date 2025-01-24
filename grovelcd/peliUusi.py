@@ -81,6 +81,10 @@ scoresDict = {} #pisteet
 
 name = ""
 
+lcd = JHD1802()
+rows, columns = lcd.size()
+lcd.clear()
+
 #with open("savedScores.json", "r") as file: #pelipisteiden asetus
     #scoresDict = json.load(file)
 
@@ -191,7 +195,7 @@ def gameOver():
 
 
 def main():
-
+    
     global playerPosY, playerPosX, obstaclePos
     
     name = getName() #pelaajan nimen kysyminen
