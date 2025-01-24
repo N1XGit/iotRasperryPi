@@ -125,6 +125,8 @@ name = ""  # Player's name
 
 lcd = JHD1802()
 rows, columns = lcd.size()
+pin = 5
+sonar = GroveUltrasonicRanger(pin)
 
 lcd.clear()
 lcd.setCursor(0,0)
