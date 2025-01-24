@@ -112,7 +112,7 @@ def getName():
 
         saveName = str(input)
 
-        saveName = saveName.lower
+        saveName = saveName.lower()
 
         if saveName == "y":
             
@@ -185,6 +185,8 @@ def gameOver():
     lcd.setCursor(1, 0)
     lcd.write("Score saved.")
 
+    obstaclePos = []
+
     scoresDict[name] = score #pisteiden asetus sanakirjaan
 
     #with open("savedScores.json", "w") as file:
@@ -219,7 +221,7 @@ def main():
 
         for i in obstaclePos:
             obstaclePos.remove(i) #jos este menee ruudulta pois se poistetaan
-            if obstaclePos > 0: # esteen paikkaa siirretään 1 eteenpäin
+            if i >= 0: # esteen paikkaa siirretään 1 eteenpäin
                 obstaclePos.append(i - 1)
             
 
