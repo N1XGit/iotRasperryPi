@@ -201,7 +201,7 @@ def inputJump():
 
 def generate_obstacle():
     global obstaclePos
-    if len(obstaclePos) == 0 or width - obstaclePos[-1] >= 6:
+    if len(obstaclePos) == 0 or width - obstaclePos[-1] >= 8:
         obstaclePos.append(width - 1)
 
 
@@ -309,7 +309,7 @@ def main():
     
             move_obstacles()  # Move obstacles to the left
     
-            time.sleep(0.8)  # Game loop delay
+            time.sleep(1)  # Game loop delay
               # Print the game state
         lcd.clear()
         lcd.setCursor(0,0)
