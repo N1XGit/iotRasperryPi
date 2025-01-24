@@ -188,7 +188,7 @@ def inputJump():
     from grove.helper import SlotHelper
     
     global baseDistance
-    newDistance = sonar.get_distance
+    newDistance = sonar.get_distance()
     if newDistance <= baseDistance - 2:
         return False
     else:
