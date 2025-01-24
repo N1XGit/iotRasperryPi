@@ -110,8 +110,21 @@ def inputJump():
 
 def generate_obstacle():
     global obstaclePos
-    if len(obstaclePos) == 0 or width - obstaclePos[-1] >= 6:
+    if len(obstaclePos) == 0:  # First obstacle, place it at the last space (width - 1)
         obstaclePos.append(width - 1)
+    else:
+        # Get the last obstacle position
+        last_obstacle = obstaclePos[-1]
+        
+        # Calculate a random distance between 3 and 6 spaces
+        distance = random.randint(3, 6)
+        
+        # Determine the position of the new obstacle, ensuring it fits on the screen
+        new_obstacle = last_obstacle - distance
+        
+        # If the new obstacle position is within the screen bounds (0-15), append it
+        if new_obstacle >= 0:
+            obstaclePos.append(new_obstacle)
 
 
 def move_obstacles():
