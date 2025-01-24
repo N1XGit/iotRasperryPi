@@ -192,6 +192,8 @@ def gameOver():
 
 def main():
 
+    global playerPosY, playerPosX, obstaclePos
+    
     name = getName() #pelaajan nimen kysyminen
     jumpTimer = 3 #kaunko pelaaja ilmassa hypyn jälkeen
 
