@@ -121,6 +121,7 @@ def move_obstacles():
         if obstacle > 0:
             new_obstacle_pos.append(obstacle - 1)  # Move obstacle one step left
     obstaclePos = new_obstacle_pos
+    print(obstaclePos)
 
 
 def printGame():
