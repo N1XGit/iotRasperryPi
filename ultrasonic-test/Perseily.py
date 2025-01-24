@@ -130,14 +130,14 @@ sonar = GroveUltrasonicRanger(pin)
 
 lcd.clear()
 lcd.setCursor(0,0)
-lcd.write("Käsi pois edestä")
+lcd.write(" Remove hand")
 lcd.setCursor(1,0)
-lcd.write("Otetaan etäisyys ")
-time.sleep(2)
+lcd.write(" Taking distance")
+time.sleep(5)
 baseDistance = sonar.get_distance()
 lcd.clear()
 lcd.setCursor(0,0)
-lcd.write(" Valmis")
+lcd.write(" Done")
 time.sleep(2)
 lcd.clear()
     
@@ -223,10 +223,11 @@ def printGame():
 
     lcd.clear()
 
-    lcd.setCursor(1, 0)
+    
     # Draw obstacles
     for obstacle in obstaclePos:
         
+        lcd.setCursor(1,1)
         lcd.setCursor(1, obstacle)
         lcd.write("x")
 
@@ -308,7 +309,7 @@ def main():
     
             move_obstacles()  # Move obstacles to the left
     
-            time.sleep(0.5)  # Game loop delay
+            time.sleep(0.8)  # Game loop delay
               # Print the game state
         lcd.clear()
         lcd.setCursor(0,0)
