@@ -134,6 +134,7 @@ def printGame():
 
     # Draw obstacles
     for obstacle in obstaclePos:
+        lcd.setCursor(1, 0)
         lcd.setCursor(1, obstacle)
         lcd.write("x")
 
