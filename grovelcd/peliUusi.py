@@ -81,8 +81,8 @@ scoresDict = {} #pisteet
 
 name = ""
 
-with open("savedScores.json", "r") as file: #pelipisteiden asetus
-    scoresDict = json.load(file)
+#with open("savedScores.json", "r") as file: #pelipisteiden asetus
+    #scoresDict = json.load(file)
 
 
 
@@ -187,8 +187,8 @@ def gameOver():
 
     scoresDict[name] = score #pisteiden asetus sanakirjaan
 
-    with open("savedScores.json", "w") as file:
-        json.dump(scoresDict, file) #sanakirjan päivitys
+    #with open("savedScores.json", "w") as file:
+        #json.dump(scoresDict, file) #sanakirjan päivitys
 
 
 
