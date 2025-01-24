@@ -242,6 +242,8 @@ def printGame():
     # Display score
     lcd.setCursor(0, columns - len(str(score)))
     lcd.write(str(score))
+    lcd.setCursor(0,3)
+    lcd.write(objectPos[0] + 1)
 
 
 def collision():
