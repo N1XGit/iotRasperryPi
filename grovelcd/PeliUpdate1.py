@@ -107,7 +107,7 @@ def inputJump():
 
 def generate_obstacle():
     global obstaclePos
-    if len(obstaclePos) == 0 or obstaclePos[-1] > 6:
+    if len(obstaclePos) == 0 or width - obstaclePos[-1] >= 6:
         obstaclePos.append(width - 1)
 
 
