@@ -225,7 +225,7 @@ def printGame():
 
     
     # Draw obstacles
-    for obstacle in obstaclePos:
+    for obstacle in reversed(obstaclePos):
         
         lcd.setCursor(1,1)
         lcd.setCursor(1, obstacle)
